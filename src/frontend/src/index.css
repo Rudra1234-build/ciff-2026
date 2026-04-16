@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap");
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0.98 0.005 300;
+    --foreground: 0.18 0.04 290;
+
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.04 290;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.04 290;
+
+    /* Deep violet-purple primary */
+    --primary: 0.42 0.22 295;
+    --primary-foreground: 1 0 0;
+
+    /* Warm orange accent */
+    --secondary: 0.72 0.19 52;
+    --secondary-foreground: 0.15 0.05 290;
+
+    --muted: 0.93 0.02 290;
+    --muted-foreground: 0.52 0.05 280;
+
+    /* Teal accent */
+    --accent: 0.68 0.15 195;
+    --accent-foreground: 0.15 0.05 290;
+
+    --destructive: 0.58 0.22 25;
+    --destructive-foreground: 1 0 0;
+
+    --border: 0.88 0.04 285;
+    --input: 0.88 0.04 285;
+    --ring: 0.42 0.22 295;
+
+    --radius: 1rem;
+
+    --chart-1: 0.42 0.22 295;
+    --chart-2: 0.72 0.19 52;
+    --chart-3: 0.68 0.15 195;
+    --chart-4: 0.62 0.2 340;
+    --chart-5: 0.55 0.18 145;
+
+    --sidebar: 0.96 0.01 290;
+    --sidebar-foreground: 0.18 0.04 290;
+    --sidebar-primary: 0.42 0.22 295;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.93 0.02 290;
+    --sidebar-accent-foreground: 0.18 0.04 290;
+    --sidebar-border: 0.88 0.04 285;
+    --sidebar-ring: 0.42 0.22 295;
+
+    /* Festival custom tokens */
+    --festival-purple: 0.42 0.22 295;
+    --festival-orange: 0.72 0.19 52;
+    --festival-teal: 0.68 0.15 195;
+    --festival-pink: 0.62 0.2 340;
+    --festival-yellow: 0.88 0.18 96;
+    --festival-dark: 0.18 0.06 290;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Figtree", "Nunito", sans-serif;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Bricolage Grotesque", "Nunito", sans-serif;
+  }
+}
+
+@layer utilities {
+  .festival-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.42 0.22 295) 0%,
+      oklch(0.52 0.24 310) 40%,
+      oklch(0.38 0.2 270) 100%
+    );
+  }
+
+  .festival-text-gradient {
+    background: linear-gradient(
+      90deg,
+      oklch(0.88 0.18 96),
+      oklch(0.72 0.19 52),
+      oklch(0.88 0.18 96)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .confetti-bg {
+    background-image: radial-gradient(
+        circle at 20% 50%,
+        oklch(0.72 0.19 52 / 0.15) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        oklch(0.68 0.15 195 / 0.15) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 60% 80%,
+        oklch(0.62 0.2 340 / 0.1) 0%,
+        transparent 50%
+      );
+  }
+
+  .star-bg {
+    background-image: radial-gradient(
+        1px 1px at 10% 20%,
+        oklch(0.88 0.18 96 / 0.6) 0%,
+        transparent 100%
+      ),
+      radial-gradient(
+        1px 1px at 30% 60%,
+        oklch(0.88 0.18 96 / 0.4) 0%,
+        transparent 100%
+      ),
+      radial-gradient(
+        1px 1px at 50% 40%,
+        oklch(1 0 0 / 0.6) 0%,
+        transparent 100%
+      ),
+      radial-gradient(
+        1px 1px at 70% 80%,
+        oklch(0.88 0.18 96 / 0.4) 0%,
+        transparent 100%
+      ),
+      radial-gradient(
+        1px 1px at 90% 30%,
+        oklch(1 0 0 / 0.5) 0%,
+        transparent 100%
+      );
+  }
+
+  .section-divider {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(0.72 0.19 52),
+      oklch(0.68 0.15 195),
+      oklch(0.62 0.2 340),
+      transparent
+    );
+    height: 3px;
+    border-radius: 9999px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}

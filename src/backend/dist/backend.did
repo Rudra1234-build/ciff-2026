@@ -1,0 +1,62 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type Time = int;
+type Rating = 
+ record {
+   createdAt: int;
+   filmId: text;
+   raterName: text;
+   stars: nat;
+ };
+type FilmSubmission = 
+ record {
+   ageGroup: text;
+   contactEmail: text;
+   country: text;
+   description: text;
+   director: text;
+   filmTitle: text;
+   submittedAt: Time;
+   submitterName: text;
+   videoBlob: opt ExternalBlob;
+ };
+type ExternalBlob = blob;
+type Comment = 
+ record {
+   commenterName: text;
+   createdAt: int;
+   filmId: text;
+   id: nat;
+   "text": text;
+ };
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  addComment: (filmId: text, commenterName: text, "text": text) -> (nat);
+  addRating: (filmId: text, raterName: text, stars: nat) -> ();
+  getAllSubmissions: () -> (vec FilmSubmission) query;
+  getAverageRating: (filmId: text) -> (float64) query;
+  getComments: (filmId: text) -> (vec Comment) query;
+  getRatings: (filmId: text) -> (vec Rating) query;
+  submitFilm: (submitterName: text, filmTitle: text, director: text, country:
+   text, ageGroup: text, description: text, contactEmail: text, videoBlob:
+   opt ExternalBlob) -> ();
+}

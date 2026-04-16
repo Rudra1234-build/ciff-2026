@@ -1,0 +1,51 @@
+// Version: 1.0.0
+type Comment__473346131 =
+  {
+    commenterName : Text;
+    createdAt : Int;
+    filmId : Text;
+    id : Nat;
+    text : Text
+  };
+type ExternalBlob__246066408 = Blob;
+type FilmSubmission__651537837 =
+  {
+    ageGroup : Text;
+    contactEmail : Text;
+    country : Text;
+    description : Text;
+    director : Text;
+    filmTitle : Text;
+    submittedAt : Time__900049286;
+    submitterName : Text;
+    videoBlob : ?ExternalBlob__246066408
+  };
+type Int__270357528 = Int__616954475;
+type Int__616954475 = Int;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Rating__372859385 =
+  {createdAt : Int; filmId : Text; raterName : Text; stars : Nat};
+type Time__796480547 = Int__270357528;
+type Time__900049286 = Time__796480547;
+actor {
+  stable comments :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Comment__473346131]];
+      var elementIndex : Nat__490723111
+    };
+  stable filmSubmissions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?FilmSubmission__651537837]];
+      var elementIndex : Nat__490723111
+    };
+  stable var nextCommentId : Nat;
+  stable ratings :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Rating__372859385]];
+      var elementIndex : Nat__490723111
+    }
+};
